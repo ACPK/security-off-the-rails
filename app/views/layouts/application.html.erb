@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SOTR</title>
+  <title>SOTR Application</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header page-scroll">
+      <a class="navbar-brand" href="/">Security-Off-The-Rails Application</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li><%= link_to "Profile", edit_user_registration_path %></li>
+        <% else %>
+         <li><%= link_to "Login", new_user_session_path %></li>
+         <li><%= link_to "Signup", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <p class="notice"><%= notice %></p>
+ <p class="alert"><%= alert %></p>
 
 <%= yield %>
 
